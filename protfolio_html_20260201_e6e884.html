@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Computer Science | Cyber Security Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-blue: #0a192f;
+            --accent-blue: #1d4ed8;
+            --light-blue: #60a5fa;
+            --text-light: #f8fafc;
+            --text-gray: #cbd5e1;
+            --card-bg: #1e293b;
+            --border-color: #334155;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--primary-blue);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        /* Cyber pattern background */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(29, 78, 216, 0.05) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(29, 78, 216, 0.05) 0%, transparent 20%);
+            z-index: -1;
+            pointer-events: none;
+        }
+        
+        /* Header & Navigation */
+        header {
+            padding: 1.5rem 0;
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            background-color: rgba(10, 25, 47, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 100;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--light-blue);
+        }
+        
+        .logo span {
+            color: var(--text-light);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            color: var(--text-gray);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--light-blue);
+        }
+        
+        /* Hero Section with Profile Picture */
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 4rem 0;
+            position: relative;
+        }
+        
+        .profile-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 3rem;
+        }
+        
+        .profile-frame {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 4px solid var(--accent-blue);
+            padding: 5px;
+            margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+            background-color: var(--primary-blue);
+            box-shadow: 0 0 20px rgba(29, 78, 216, 0.3);
+        }
+        
+        .profile-pic {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background-image: url('Gemini_Generated_Image_da98b0da98b0da98.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        
+        /* Security indicator on profile picture */
+        .profile-frame::after {
+            content: "🔒";
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+            background-color: var(--primary-blue);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            border: 2px solid var(--accent-blue);
+        }
+        
+        .hero-text {
+            max-width: 800px;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, var(--text-light), var(--light-blue));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.8rem;
+            color: var(--light-blue);
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+        
+        .hero-tagline {
+            font-size: 1.1rem;
+            color: var(--text-gray);
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+        
+        .btn {
+            padding: 0.8rem 2rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary {
+            background-color: var(--accent-blue);
+            color: white;
+            border: 1px solid var(--accent-blue);
+        }
+        
+        .btn-primary:hover {
+            background-color: transparent;
+            color: var(--light-blue);
+        }
+        
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--light-blue);
+            border: 1px solid var(--light-blue);
+        }
+        
+        .btn-secondary:hover {
+            background-color: rgba(96, 165, 250, 0.1);
+        }
+        
+        /* Section Styling */
+        section {
+            padding: 5rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .section-title {
+            font-size: 2.2rem;
+            margin-bottom: 3rem;
+            color: var(--text-light);
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .section-title::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 60px;
+            height: 3px;
+            background-color: var(--accent-blue);
+        }
+        
+        /* About Section */
+        .about-content {
+            font-size: 1.1rem;
+            color: var(--text-gray);
+            max-width: 800px;
+        }
+        
+        .about-content p {
+            margin-bottom: 1.5rem;
+        }
+        
+        /* Skills Section */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .skill-category {
+            background-color: var(--card-bg);
+            border-left: 4px solid var(--accent-blue);
+            padding: 1.5rem;
+            border-radius: 4px;
+        }
+        
+        .skill-category h3 {
+            color: var(--light-blue);
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+        
+        .skill-list {
+            list-style-type: none;
+        }
+        
+        .skill-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .skill-list li:last-child {
+            border-bottom: none;
+        }
+        
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2.5rem;
+        }
+        
+        .project-card {
+            background-color: var(--card-bg);
+            border-radius: 6px;
+            padding: 1.8rem;
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s, border-color 0.3s;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-blue);
+        }
+        
+        .project-category {
+            display: inline-block;
+            background-color: rgba(29, 78, 216, 0.2);
+            color: var(--light-blue);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-bottom: 1rem;
+        }
+        
+        .project-card h3 {
+            color: var(--text-light);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+        
+        .project-details {
+            color: var(--text-gray);
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+        
+        .project-lesson {
+            font-style: italic;
+            color: var(--light-blue);
+            border-top: 1px solid var(--border-color);
+            padding-top: 1rem;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+        }
+        
+        /* Learning Path */
+        .learning-path {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            max-width: 800px;
+        }
+        
+        .learning-item {
+            padding: 1.5rem;
+            background-color: var(--card-bg);
+            border-radius: 6px;
+            border-left: 4px solid var(--accent-blue);
+        }
+        
+        .learning-item h3 {
+            color: var(--light-blue);
+            margin-bottom: 0.8rem;
+        }
+        
+        /* Thinking Section */
+        .thinking-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .thinking-card {
+            padding: 1.5rem;
+            background-color: var(--card-bg);
+            border-radius: 6px;
+        }
+        
+        .thinking-card h3 {
+            color: var(--light-blue);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+        
+        /* Contact Section */
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .contact-link {
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+            color: var(--text-light);
+            text-decoration: none;
+            padding: 1rem 1.5rem;
+            background-color: var(--card-bg);
+            border-radius: 6px;
+            transition: background-color 0.3s;
+        }
+        
+        .contact-link:hover {
+            background-color: rgba(29, 78, 216, 0.2);
+        }
+        
+        .contact-icon {
+            font-size: 1.5rem;
+            color: var(--light-blue);
+        }
+        
+        /* Footer */
+        footer {
+            padding: 2rem 0;
+            text-align: center;
+            color: var(--text-gray);
+            font-size: 0.9rem;
+        }
+        
+        .footer-name {
+            font-size: 1.2rem;
+            color: var(--light-blue);
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-field {
+            margin-bottom: 1rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.4rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .profile-frame {
+                width: 160px;
+                height: 160px;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 200px;
+                text-align: center;
+            }
+            
+            .projects-grid, .skills-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .thinking-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">CS<span>|</span>SEC</div>
+                <div class="nav-links">
+                    <a href="#home">Home</a>
+                    <a href="#about">About</a>
+                    <a href="#skills">Skills</a>
+                    <a href="#projects">Projects</a>
+                    <a href="#learning">Learning Path</a>
+                    <a href="#thinking">How I Think</a>
+                    <a href="#contact">Contact</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="profile-container">
+                <div class="profile-frame">
+                    <div class="profile-pic"></div>
+                </div>
+                <div class="hero-text">
+                    <h1>Computer Science Student | Cyber Security Enthusiast</h1>
+                    <div class="hero-subtitle">Thinking like an attacker. Building as a defender.</div>
+                    <p class="hero-tagline">Specializing in security analysis, penetration testing fundamentals, and secure software development with a focus on defensive programming methodologies.</p>
+                    <div class="cta-buttons">
+                        <a href="#projects" class="btn btn-primary">View Projects</a>
+                        <a href="#" class="btn btn-secondary">Download CV</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <p>I am a Computer Science student with a strong technical focus on Cyber Security. My academic background provides a solid foundation in software development, algorithms, and system architecture, while my specialized interest lies in understanding attack vectors and building secure systems.</p>
+                <p>My approach to security is rooted in analytical thinking and problem-solving. I believe that to build truly secure systems, one must first understand how they can be broken. This mindset drives my exploration of penetration testing, vulnerability analysis, and defensive programming techniques.</p>
+                <p>I am particularly interested in the intersection of software development and security, where secure coding practices meet real-world threat modeling. My goal is to develop systems that are not only functional but resilient against evolving threats.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="container">
+            <h2 class="section-title">Skills</h2>
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h3>Programming</h3>
+                    <ul class="skill-list">
+                        <li>Java</li>
+                        <li>Python</li>
+                        <li>C / C++</li>
+                        <li>JavaScript</li>
+                        <li>Bash Scripting</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>Cyber Security</h3>
+                    <ul class="skill-list">
+                        <li>Web Security Fundamentals</li>
+                        <li>Penetration Testing Basics</li>
+                        <li>Malware Reverse Engineering (Beginner/Intermediate)</li>
+                        <li>Network Security Concepts</li>
+                        <li>Cryptography Principles</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>Tools & Mindset</h3>
+                    <ul class="skill-list">
+                        <li>Linux Administration</li>
+                        <li>Debugging & Reverse Engineering</li>
+                        <li>CTF Problem Solving</li>
+                        <li>Security-oriented Thinking</li>
+                        <li>Risk Assessment & Analysis</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Key Achievements  -->
+    <section id="projects">
+        <div class="container">
+            <h2 class="section-title">Key Achievements</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <span class="project-category">CTF Competition</span>
+                    <h3>CTF Competition - CyberTalents</h3>
+                    <div class="project-details">
+                        <p><strong>Top 50 :</strong> Achieved 44th place in CyberTalents Egypt  CTF  since 2025 by solving malware reverse engineering challenges, focusing on binary analysis and behavioral understanding.</p>
+                        
+                    </div>
+                    <div class="project-lesson">
+                        <strong>Team :</strong> I was part of Pharaous team that helped me reach this position.
+                        <a href="https://cybertalents.com/competitions/egypt-national-cybersecurity-ctf-2025/teams" target="_blank">View Team Details</a>
+                    </div>
+                </div>
+                
+            
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="container">
+            <h2 class="section-title">Projects & Practice</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <span class="project-category">Web Security</span>
+                    <h3>Vulnerable Web App Analysis</h3>
+                    <div class="project-details">
+                        <p><strong>Problem:</strong> Identify and exploit common web vulnerabilities (XSS, SQLi, CSRF) in a deliberately vulnerable application.</p>
+                        <p><strong>Approach:</strong> Methodical testing using both automated tools and manual techniques to discover vulnerabilities, followed by exploitation and documentation of findings.</p>
+                    </div>
+                    <div class="project-lesson">
+                        <strong>Key Lesson:</strong> Understanding how seemingly minor input validation oversights can lead to significant security breaches.
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <span class="project-category">Reverse Engineering</span>
+                    <h3>Basic Malware Analysis</h3>
+                    <div class="project-details">
+                        <p><strong>Problem:</strong> Analyze a sample malware to understand its behavior, persistence mechanisms, and communication methods.</p>
+                        <p><strong>Approach:</strong> Static and dynamic analysis using disassemblers, debuggers, and sandboxed environments to trace execution flow and identify malicious patterns.</p>
+                    </div>
+                    <div class="project-lesson">
+                        <strong>Key Lesson:</strong> The importance of controlled environments for analysis and how malware often employs obfuscation techniques.
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <span class="project-category">CTF Challenge</span>
+                    <h3>Cryptography Decryption Challenge</h3>
+                    <div class="project-details">
+                        <p><strong>Problem:</strong> Decrypt a series of encoded messages using various cryptographic techniques without knowing the exact algorithms used.</p>
+                        <p><strong>Approach:</strong> Pattern recognition, frequency analysis, and systematic testing of common encryption weaknesses while documenting the reasoning process.</p>
+                    </div>
+                    <div class="project-lesson">
+                        <strong>Key Lesson:</strong> How implementation flaws in cryptographic systems often present more vulnerabilities than the algorithms themselves.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Learning Path Section -->
+    <section id="learning">
+        <div class="container">
+            <h2 class="section-title">Learning Path</h2>
+            <div class="learning-path">
+                <div class="learning-item">
+                    <h3>Currently Learning</h3>
+                    <p>Advanced penetration testing methodologies, network security protocols, exploit development basics, and cloud security fundamentals.</p>
+                </div>
+                
+                <div class="learning-item">
+                    <h3>Target Specialization</h3>
+                    <p>Application Security & Penetration Testing with a focus on web applications and API security. I aim to bridge development and security roles.</p>
+                </div>
+                
+                <div class="learning-item">
+                    <h3>Next Steps</h3>
+                    <p>Deep dive into container security, advanced reverse engineering, threat intelligence methodologies, and security automation.</p>
+                </div>
+                
+                <div class="learning-item">
+                    <h3>Continuous Learning Mindset</h3>
+                    <p>Security is an ever-evolving field. I maintain a disciplined approach to staying current through research, hands-on practice, and community engagement.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Thinking Section -->
+    <section id="thinking">
+        <div class="container">
+            <h2 class="section-title">How I Think</h2>
+            <div class="thinking-grid">
+                <div class="thinking-card">
+                    <h3>Analyzing a Problem</h3>
+                    <p>I break down complex systems into components, identify interfaces and trust boundaries, and systematically evaluate each for potential weaknesses.</p>
+                </div>
+                
+                <div class="thinking-card">
+                    <h3>Thinking Like an Attacker</h3>
+                    <p>I adopt an adversarial mindset: What would I target? What's the easiest entry point? How can I maintain access? This perspective informs defensive strategies.</p>
+                </div>
+                
+                <div class="thinking-card">
+                    <h3>Validating Assumptions</h3>
+                    <p>I challenge every assumption about system behavior. If documentation says "secure," I test it. If code appears safe, I look for edge cases.</p>
+                </div>
+                
+                <div class="thinking-card">
+                    <h3>Improving After Failure</h3>
+                    <p>Every security failure is a learning opportunity. I conduct root cause analysis, document lessons, and implement systemic fixes rather than just patching symptoms.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">Contact</h2>
+            <div class="contact-links">
+                <a href="https://github.com/shadyProg" target="_blank" class="contact-link">
+                    <i class="fab fa-github contact-icon"></i>
+                    <span>GitHub</span>
+                </a>
+                
+                <a href="https://www.linkedin.com/in/shady-ahmed-5a0b42301/" target="_blank" class="contact-link">
+                    <i class="fab fa-linkedin contact-icon"></i>
+                    <span>LinkedIn</span>
+                </a>
+                
+                <a href="https://leetcode.com/u/Ferweob/" target="_blank" class="contact-link">
+                    <i class="cib-leetcode contact-icon"></i>
+                    <span>LeetCode</span>
+                </a>
+                <a href="https://tryhackme.com/p/0xCoreX" target="_blank" class="contact-link">
+                    <i class="fab fa-tryhackme contact-icon"></i>
+                    <span>TryHackMe</span>
+                </a>
+
+                
+                <a href="mailto:shady91c@gmail.com" class="contact-link">
+                    <i class="fas fa-envelope contact-icon"></i>
+                    <span>Email</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-name">Computer Science | Cyber Security</div>
+            <div class="footer-field">Specializing in Security Engineering </div>
+            <div class="copyright">&copy; 2026 | Minimal & Secure Portfolio</div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple script for smooth navigation and active link highlighting
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('.nav-links a');
+            
+            // Update active link on scroll
+            window.addEventListener('scroll', function() {
+                let current = '';
+                const sections = document.querySelectorAll('section');
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if (scrollY >= (sectionTop - 200)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+                
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${current}`) {
+                        link.classList.add('active');
+                        link.style.color = 'var(--light-blue)';
+                    } else {
+                        link.style.color = '';
+                    }
+                });
+            });
+            
+            // CV download simulation
+            const cvButton = document.querySelector('.btn-secondary');
+            cvButton.addEventListener('click', function(e) {
+                e.preventDefault();
+                alert('CV download would start in a real implementation. This is a demo portfolio.');
+            });
+            
+            // Profile picture upload simulation (for demonstration)
+            const profilePic = document.querySelector('.profile-pic');
+            profilePic.addEventListener('click', function() {
+                if(confirm('Would you like to upload a different profile picture? This is a demo - in a real implementation, this would open a file picker.')) {
+                    // In a real implementation, this would trigger a file input
+                    // For demo, we'll change to a different placeholder image
+                    const images = [
+                        'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
+                        'https://images.unsplash.com/photo-1507591064344-4c6ce005-128b-5225c1d2c73?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80',
+                        'https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80'
+                    ];
+                    const randomImage = images[Math.floor(Math.random() * images.length)];
+                    profilePic.style.backgroundImage = `url('${randomImage}')`;
+                    alert('Profile picture updated (demo only). In a real implementation, this would save your actual photo.');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
